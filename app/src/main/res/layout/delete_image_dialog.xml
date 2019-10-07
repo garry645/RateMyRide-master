@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="185dp"
+    android:layout_height="75dp"
+    android:layout_gravity="center"
+    android:background="@color/common_google_signin_btn_text_dark_focused">
+
+    <TextView
+        android:id="@+id/deleteTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/delete_image"
+        android:textColor="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/deleteTV">
+
+        <Button
+            android:id="@+id/yesBT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yes" />
+
+        <Button
+            android:id="@+id/noBT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no" />
+    </LinearLayout>
+</RelativeLayout>

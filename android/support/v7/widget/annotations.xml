@@ -1,0 +1,11 @@
+<root>
+    <item name='android.support.v7.widget.GridLayoutManager'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+    <item name='android.support.v7.widget.LinearLayoutManager'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+    <item name='android.support.v7.widget.RecyclerView'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>

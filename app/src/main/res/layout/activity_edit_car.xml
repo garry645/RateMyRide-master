@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:layout_margin="10dp"
+android:padding="10dp"
+android:background="@drawable/blue_gradient_background">
+
+<Button
+    android:id="@+id/ECFinishedBT"
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/button_design"
+    android:text="@string/finish"
+    android:textColor="@android:color/white"
+    android:layout_height="wrap_content"
+    />
+
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height= "match_parent"
+    android:layout_above="@+id/ECFinishedBT">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ECImageLL1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <ImageButton
+            android:id="@+id/ECCarImage1"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="@string/carimage1"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="@string/carimage2"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage3"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/carimage3"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage4"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/carimage4"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage5"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/carimage5"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage6"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/carimage6"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage7"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/carimage7"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage8"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/carimage8"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage9"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/carimage9"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ECCarImage10"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/carimage10"
+            android:background="@android:color/black"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plus"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+</RelativeLayout>

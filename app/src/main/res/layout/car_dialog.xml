@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="10dp"
+    android:background="@drawable/gradient_1"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialogUsernameET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/username"
+        android:textColor="@android:color/darker_gray" />
+
+    <ImageButton
+        android:id="@+id/dialogIB"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/carimages" />
+
+    <TextView
+        android:id="@+id/dialogMakeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/make"
+        android:textColor="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/dialogModelTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/model"
+        android:textColor="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/dialogYearTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/year"
+        android:textColor="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/dialogRatingTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/rating"
+        android:textColor="@android:color/darker_gray" />
+
+
+</LinearLayout>

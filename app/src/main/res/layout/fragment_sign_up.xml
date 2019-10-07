@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/blue_gradient_background">
+
+    <TextView
+        android:id="@+id/welcomeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/welcome"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        />
+
+    <TextView
+        android:id="@+id/toTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/to"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        />
+
+    <TextView
+        android:id="@+id/rMRTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/rate_my_ride"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        />
+
+    <EditText
+        android:id="@+id/signUpEmailET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        />
+
+    <EditText
+        android:id="@+id/usernameET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        />
+
+    <EditText
+        android:id="@+id/signUpPasswordET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        />
+
+    <Button
+        android:id="@+id/addRideBT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_design"
+        android:text="@string/add_a_ride"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/signUpMakeET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/make"
+        android:hint="@string/make"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:visibility="gone"
+        tools:targetApi="o"
+        />
+
+    <EditText
+        android:id="@+id/signUpModelET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/model"
+        android:hint="@string/model"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:visibility="gone"
+        tools:targetApi="o"
+       />
+
+    <EditText
+        android:id="@+id/signUpYearET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/year"
+        android:hint="@string/year"
+        android:inputType="number"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:visibility="gone"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_design"
+        android:layout_marginTop="8dp"
+        android:text="@string/sign_up_without_a_ride"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        />
+
+
+    <TextView
+        android:id="@+id/orTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/or"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/swapToLoginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_design"
+        android:onClick="swapToLogin"
+        android:text="@string/log_in"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        />
+</LinearLayout>
