@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <EditText
@@ -13,8 +14,8 @@
         android:hint="@string/make"
         android:inputType="text"
         android:paddingTop="20dp"
-        android:textColor="@android:color/darker_gray"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
         tools:targetApi="o" />
 
     <EditText
@@ -24,8 +25,8 @@
         android:inputType="text"
         android:paddingTop="20dp"
         android:text="@string/model"
-        android:textColor="@android:color/darker_gray"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
         tools:targetApi="o" />
 
     <EditText
@@ -36,8 +37,8 @@
         android:hint="@string/year"
         android:inputType="number"
         android:paddingTop="20dp"
-        android:textColor="@android:color/darker_gray"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
         tools:targetApi="o" />
 
     <Button
@@ -49,7 +50,7 @@
         android:background="@drawable/button_design"
         android:text="@string/add_ride"
         android:textAllCaps="false"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold" />
 
 
