@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2,
                 new GarageFragment()).commit();
 
+
     }
 
 

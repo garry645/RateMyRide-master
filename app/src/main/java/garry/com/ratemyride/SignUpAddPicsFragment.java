@@ -20,10 +20,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -85,7 +88,7 @@ public class SignUpAddPicsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_ride, container, false);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference(owner.getEmail());
+        mStorageRef = FirebaseStorage.getInstance().getReference(owner.getEmail() + "/" + car.getDbID());
         loadFileReferences(car.getDbID());
         loadImageButtons(view);
 
@@ -375,7 +378,9 @@ public class SignUpAddPicsFragment extends Fragment {
 
     //public void uploadImage(Uri uriIn, int position, ImageButton currentIB, ImageButton nextIB) {
     private void uploadImage(Uri uriIn, ImageButton currentIB, StorageReference fileReference) {
-        fileReference.putFile(uriIn).addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+
+        String fileID = UUID.randomUUID().toString();
+        mStorageRef.child(fileID).putFile(uriIn).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
             Log.d("", "onSuccess: uri= " + uri.toString());
             car.addImageUrl(linearLayout1.indexOfChild(currentIB), uri.toString());
         })).addOnCompleteListener(task -> {
@@ -388,12 +393,12 @@ public class SignUpAddPicsFragment extends Fragment {
     }
 
     private void deleteImage(ImageButton iBToDelete, StorageReference refToDel) {
-        refToDel.delete();
+        //refToDel.delete();
+        FirebaseStorage.getInstance().getReferenceFromUrl(car.getCarImageUrl(linearLayout1.indexOfChild(iBToDelete))).delete();
         car.deleteImageUrl(linearLayout1.indexOfChild(iBToDelete));
 
         iBToDelete.setVisibility(View.GONE);
         iBToDelete.setImageResource(R.drawable.plus);
-
 
         linearLayout1.removeView(iBToDelete);
         linearLayout1.addView(iBToDelete, 9);

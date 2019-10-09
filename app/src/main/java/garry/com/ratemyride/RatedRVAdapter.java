@@ -59,6 +59,7 @@ public class RatedRVAdapter extends FirestoreRecyclerAdapter<Rating, RatedRVAdap
                         .into(holder.vCarImage);
 
             } else {
+                if(position < getSnapshots().size())
                 getSnapshots().getSnapshot(position).getReference().delete();
             }
         });

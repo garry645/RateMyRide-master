@@ -1,5 +1,6 @@
 package garry.com.ratemyride;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -26,6 +27,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.util.ArrayList;
 import java.util.Objects;
 import static garry.com.ratemyride.MainActivity.owner;
+import static java.security.AccessController.getContext;
 import static java.util.Objects.requireNonNull;
 
 public class EditCarActivity extends AppCompatActivity {
@@ -83,6 +85,13 @@ public class EditCarActivity extends AppCompatActivity {
 
         linearLayout1 = findViewById(R.id.ECImageLL1);
 
+
+        mDialog = new Dialog(this);
+        mDialog.setContentView(R.layout.delete_image_dialog);
+        Button noBt = mDialog.findViewById(R.id.noBT);
+        yesBT = mDialog.findViewById(R.id.yesBT);
+        noBt.setOnClickListener(v -> mDialog.dismiss());
+
         Intent intent = getIntent();
         String carDBID = intent.getStringExtra(MainActivity.CARDBID_EXTRA);
         assert carDBID != null;
@@ -93,10 +102,14 @@ public class EditCarActivity extends AppCompatActivity {
             loadFileReferences(carToEdit.getDbID());
             loadImageButtons();
             imageAmount = carToEdit.getCarImageUrls().size();
-            for(int i = 0; i < imageAmount; i++) {
-                Glide.with(this)
-                        .load(carToEdit.getCarImageUrl(i))
-                        .into(IBs.get(i));
+
+            for(int i = 0; i <= imageAmount; i++) {
+                if(i < imageAmount) {
+                    Glide.with(this)
+                            .load(carToEdit.getCarImageUrl(i))
+                            .into(IBs.get(i));
+                }
+                IBs.get(i).setVisibility(View.VISIBLE);
             }
         });
 
@@ -303,6 +316,81 @@ public class EditCarActivity extends AppCompatActivity {
             return false;
         });
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (resultCode == SignUpActivity.RESULT_OK && data != null) {
+
+            switch (requestCode) {
+
+
+                case PICK_IMAGE_REQUEST1:
+                    CropImageView.CropResult result = CropImage.getActivityResult(data);
+                    Uri uri1 = result.getUri();
+                    uploadImage(uri1, carImage1, fileReference1);
+                    break;
+
+
+                case PICK_IMAGE_REQUEST2:
+                    CropImageView.CropResult result2 = CropImage.getActivityResult(data);
+                    Uri uri2 = result2.getUri();
+                    uploadImage(uri2, carImage2, fileReference2);
+                    break;
+
+                case PICK_IMAGE_REQUEST3:
+                    CropImageView.CropResult result3 = CropImage.getActivityResult(data);
+                    Uri uri3 = result3.getUri();
+                    uploadImage(uri3, carImage3, fileReference3);
+                    break;
+
+                case PICK_IMAGE_REQUEST4:
+                    CropImageView.CropResult result4 = CropImage.getActivityResult(data);
+                    Uri uri4 = result4.getUri();
+                    uploadImage(uri4, carImage4, fileReference4);
+                    break;
+
+                case PICK_IMAGE_REQUEST5:
+                    CropImageView.CropResult result5 = CropImage.getActivityResult(data);
+                    Uri uri5 = result5.getUri();
+                    uploadImage(uri5, carImage5, fileReference5);
+                    break;
+
+                case PICK_IMAGE_REQUEST6:
+                    CropImageView.CropResult result6 = CropImage.getActivityResult(data);
+                    Uri uri6 = result6.getUri();
+                    uploadImage(uri6, carImage6, fileReference6);
+                    break;
+
+                case PICK_IMAGE_REQUEST7:
+                    CropImageView.CropResult result7 = CropImage.getActivityResult(data);
+                    Uri uri7 = result7.getUri();
+                    uploadImage(uri7, carImage7, fileReference7);
+                    break;
+
+                case PICK_IMAGE_REQUEST8:
+                    CropImageView.CropResult result8 = CropImage.getActivityResult(data);
+                    Uri uri8 = result8.getUri();
+                    uploadImage(uri8, carImage8, fileReference8);
+                    break;
+
+                case PICK_IMAGE_REQUEST9:
+                    CropImageView.CropResult result9 = CropImage.getActivityResult(data);
+                    Uri uri9 = result9.getUri();
+                    uploadImage(uri9, carImage9, fileReference9);
+                    break;
+
+                case PICK_IMAGE_REQUEST10:
+                    CropImageView.CropResult result10 = CropImage.getActivityResult(data);
+                    Uri uri10 = result10.getUri();
+                    uploadImage(uri10, carImage10, fileReference10);
+                    break;
+            }
+        }
+
+    }
     private void uploadImage(Uri uriIn, ImageButton currentIB, StorageReference fileReference) {
         fileReference.putFile(uriIn).addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
             Log.d("", "onSuccess: uri= " + uri.toString());
@@ -317,7 +405,9 @@ public class EditCarActivity extends AppCompatActivity {
     }
 
     private void deleteImage(ImageButton iBToDelete, StorageReference refToDel) {
-        refToDel.delete();
+        //refToDel.delete();
+        int index = IBs.indexOf(iBToDelete);
+        mStorageRef.child(carToEdit.getCarImageUrl(index)).delete();
         carToEdit.deleteImageUrl(linearLayout1.indexOfChild(iBToDelete));
 
         iBToDelete.setVisibility(View.GONE);
