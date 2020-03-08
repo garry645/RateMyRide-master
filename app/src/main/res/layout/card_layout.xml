@@ -39,6 +39,7 @@
                 android:background="@android:color/transparent"
                 android:text="@string/username"
                 android:textAlignment="center"
+                android:gravity="center_horizontal"
                 android:textColor="@color/colorPrimary"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="@+id/carImageButton"
