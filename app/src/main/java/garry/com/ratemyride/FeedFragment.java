@@ -21,7 +21,6 @@ import com.google.firebase.firestore.Query;
 
 import static garry.com.ratemyride.MainActivity.owner;
 import static garry.com.ratemyride.MainActivity.user;
-import static garry.com.ratemyride.MainActivity.userSnapshot;
 
 public class FeedFragment extends Fragment {
 

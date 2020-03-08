@@ -4,24 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity"
-    android:background="@android:color/black">
+    android:background="@android:color/black"
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigation"
-        android:layout_marginBottom="1dp"
-        />
+        android:layout_marginBottom="1dp" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
 
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_navigation"
-            android:background="@drawable/gradient_1"/>
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/gradient_1"
+        app:menu="@menu/bottom_navigation" />
 
 </RelativeLayout>

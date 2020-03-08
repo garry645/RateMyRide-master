@@ -1,7 +1,5 @@
 package garry.com.ratemyride;
 
-import android.app.Dialog;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,13 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
-import java.util.Objects;
 
 import static garry.com.ratemyride.MainActivity.carsReference;
 import static garry.com.ratemyride.MainActivity.email;

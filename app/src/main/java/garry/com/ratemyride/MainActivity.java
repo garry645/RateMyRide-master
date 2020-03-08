@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;

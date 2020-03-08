@@ -5,15 +5,14 @@
     android:id="@+id/signUpLL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context=".SignUpActivity">
 
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

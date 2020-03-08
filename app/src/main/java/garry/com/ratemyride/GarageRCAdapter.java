@@ -3,7 +3,6 @@ package garry.com.ratemyride;
 import android.annotation.SuppressLint;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
@@ -21,19 +20,15 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import java.text.DecimalFormat;
-import java.util.Objects;
 
 public class GarageRCAdapter extends FirestoreRecyclerAdapter<Car, GarageRCAdapter.GarageCarHolder> {
 
-
-    private OnItemLongCLickListener mListener;
 
     public interface OnItemLongCLickListener {
         void onItemLongClick(int position);
     }
 
     void setOnItemClickListener(OnItemLongCLickListener listener) {
-        mListener = listener;
     }
 
     GarageRCAdapter(@NonNull FirestoreRecyclerOptions<Car> options) {

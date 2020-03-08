@@ -34,7 +34,6 @@ import static garry.com.ratemyride.AddingCarFragment.newCarRef;
 import static garry.com.ratemyride.AddingCarActivity.owner;
 import static garry.com.ratemyride.AddingCarActivity.ratersReference;
 import static garry.com.ratemyride.SignUpActivity.EMAIL_EXTRA;
-import static garry.com.ratemyride.AddingCarActivity.email;
 
 public class AddingCarPicsFragment extends Fragment {
     private static final int PICK_IMAGE_REQUEST1 = 1;
@@ -60,23 +59,21 @@ public class AddingCarPicsFragment extends Fragment {
     private ImageButton carImage10;
 
     private StorageReference fileReference1;
-    StorageReference fileReference2;
-    StorageReference fileReference3;
-    StorageReference fileReference4;
-    StorageReference fileReference5;
-    StorageReference fileReference6;
-    StorageReference fileReference7;
-    StorageReference fileReference8;
-    StorageReference fileReference9;
-    StorageReference fileReference10;
+    private StorageReference fileReference2;
+    private StorageReference fileReference3;
+    private StorageReference fileReference4;
+    private StorageReference fileReference5;
+    private StorageReference fileReference6;
+    private StorageReference fileReference7;
+    private StorageReference fileReference8;
+    private StorageReference fileReference9;
+    private StorageReference fileReference10;
 
 
-    Button finishedBT;
-    Dialog mDialog;
-    Button yesBT;
-    Button noBt;
-    int imageAmount;
-    LinearLayout linearLayout1;
+    private Dialog mDialog;
+    private Button yesBT;
+    private int imageAmount;
+    private LinearLayout linearLayout1;
     private StorageReference mStorageRef;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -94,7 +91,7 @@ public class AddingCarPicsFragment extends Fragment {
 
         mDialog = new Dialog(Objects.requireNonNull(this.getContext()));
         mDialog.setContentView(R.layout.delete_image_dialog);
-        noBt = mDialog.findViewById(R.id.noBT);
+        Button noBt = mDialog.findViewById(R.id.noBT);
         yesBT = mDialog.findViewById(R.id.yesBT);
         noBt.setOnClickListener(v ->
                 mDialog.dismiss());
@@ -139,7 +136,7 @@ public class AddingCarPicsFragment extends Fragment {
         carImage10 = view.findViewById(R.id.carImage10);
 
 
-        finishedBT = view.findViewById(R.id.finishedBT);
+        Button finishedBT = view.findViewById(R.id.finishedBT);
         finishedBT.setOnClickListener(v -> finish());
 
 
@@ -375,7 +372,7 @@ public class AddingCarPicsFragment extends Fragment {
     }
 
     //public void uploadImage(Uri uriIn, int position, ImageButton currentIB, ImageButton nextIB) {
-    public void uploadImage(Uri uriIn, ImageButton currentIB, StorageReference fileReference) {
+    private void uploadImage(Uri uriIn, ImageButton currentIB, StorageReference fileReference) {
         fileReference.putFile(uriIn).addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
             Log.d("", "onSuccess: uri= " + uri.toString());
             car.addImageUrl(linearLayout1.indexOfChild(currentIB), uri.toString());
@@ -388,7 +385,7 @@ public class AddingCarPicsFragment extends Fragment {
         });
     }
 
-    public void deleteImage(ImageButton iBToDelete, StorageReference refToDel) {
+    private void deleteImage(ImageButton iBToDelete, StorageReference refToDel) {
         refToDel.delete();
         car.deleteImageUrl(linearLayout1.indexOfChild(iBToDelete));
 
@@ -402,7 +399,7 @@ public class AddingCarPicsFragment extends Fragment {
         mDialog.dismiss();
     }
 
-    public void finish() {
+    private void finish() {
         //add the new car to every raters "non rated cars" database
         newCarRef.update("carImageUrls", car.getCarImageUrls()).addOnCompleteListener(task -> ratersReference.get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {

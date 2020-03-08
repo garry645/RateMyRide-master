@@ -25,9 +25,9 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.UUID;
+
 import static garry.com.ratemyride.MainActivity.owner;
-import static java.security.AccessController.getContext;
 import static java.util.Objects.requireNonNull;
 
 public class EditCarActivity extends AppCompatActivity {
@@ -53,23 +53,10 @@ public class EditCarActivity extends AppCompatActivity {
     private ImageButton carImage9;
     private ImageButton carImage10;
 
-    private StorageReference fileReference1;
-    private StorageReference fileReference2;
-    private StorageReference fileReference3;
-    private StorageReference fileReference4;
-    private StorageReference fileReference5;
-    private StorageReference fileReference6;
-    private StorageReference fileReference7;
-    private StorageReference fileReference8;
-    private StorageReference fileReference9;
-    private StorageReference fileReference10;
-
     private Dialog mDialog;
     private Button yesBT;
-    private int imageAmount;
     private LinearLayout linearLayout1;
     private StorageReference mStorageRef;
-    private ArrayList<StorageReference> fileReferences;
     ArrayList<ImageButton> IBs;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -99,12 +86,11 @@ public class EditCarActivity extends AppCompatActivity {
         carDocRef.get().addOnCompleteListener(v -> {
             carToEdit = requireNonNull(v.getResult()).toObject(Car.class);
             assert carToEdit != null;
-            loadFileReferences(carToEdit.getDbID());
-            loadImageButtons();
-            imageAmount = carToEdit.getCarImageUrls().size();
 
-            for(int i = 0; i <= imageAmount; i++) {
-                if(i < imageAmount) {
+            loadImageButtons();
+
+            for(int i = 0; i <= carToEdit.getCarImageUrls().size(); i++) {
+                if(i < carToEdit.getCarImageUrls().size()) {
                     Glide.with(this)
                             .load(carToEdit.getCarImageUrl(i))
                             .into(IBs.get(i));
@@ -115,29 +101,7 @@ public class EditCarActivity extends AppCompatActivity {
 
     }
 
-    private void loadFileReferences(String dbIdIn) {
-        fileReference1 = mStorageRef.child(dbIdIn + "/"
-                + 1);
-        fileReference2 = mStorageRef.child(dbIdIn + "/"
-                + 2);
-        fileReference3 = mStorageRef.child(dbIdIn + "/"
-                + 3);
-        fileReference4 = mStorageRef.child(dbIdIn + "/"
-                + 4);
-        fileReference5 = mStorageRef.child(dbIdIn + "/"
-                + 5);
-        fileReference6 = mStorageRef.child(dbIdIn + "/"
-                + 6);
-        fileReference7 = mStorageRef.child(dbIdIn + "/"
-                + 7);
-        fileReference8 = mStorageRef.child(dbIdIn + "/"
-                + 8);
-        fileReference9 = mStorageRef.child(dbIdIn + "/"
-                + 9);
-        fileReference10 = mStorageRef.child(dbIdIn + "/"
-                + 10);
 
-    }
 
     private void loadImageButtons() {
         carImage1 = findViewById(R.id.ECCarImage1);
@@ -179,7 +143,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage1.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage1, fileReference1));
+                    deleteImage(carImage1));
             return false;
         });
 
@@ -194,7 +158,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage2.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage2, fileReference2));
+                    deleteImage(carImage2));
             return false;
         });
         carImage3.setOnClickListener(v -> {
@@ -208,7 +172,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage3.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage3, fileReference3));
+                    deleteImage(carImage3));
 
             return false;
         });
@@ -224,7 +188,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage4.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage4, fileReference4));
+                    deleteImage(carImage4));
             return false;
         });
 
@@ -239,7 +203,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage5.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage5, fileReference5));
+                    deleteImage(carImage5));
             return false;
         });
 
@@ -254,7 +218,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage6.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage6, fileReference6));
+                    deleteImage(carImage6));
             return false;
         });
         carImage7.setOnClickListener(v -> {
@@ -268,7 +232,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage7.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage7, fileReference7));
+                    deleteImage(carImage7));
             return false;
         });
 
@@ -283,7 +247,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage8.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage8, fileReference8));
+                    deleteImage(carImage8));
             return false;
         });
         carImage9.setOnClickListener(v -> {
@@ -297,7 +261,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage9.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage9, fileReference9));
+                    deleteImage(carImage9));
             return false;
         });
 
@@ -312,7 +276,7 @@ public class EditCarActivity extends AppCompatActivity {
         carImage10.setOnLongClickListener(v -> {
             mDialog.show();
             yesBT.setOnClickListener(b ->
-                    deleteImage(carImage10, fileReference10));
+                    deleteImage(carImage10));
             return false;
         });
     }
@@ -330,92 +294,96 @@ public class EditCarActivity extends AppCompatActivity {
                 case PICK_IMAGE_REQUEST1:
                     CropImageView.CropResult result = CropImage.getActivityResult(data);
                     Uri uri1 = result.getUri();
-                    uploadImage(uri1, carImage1, fileReference1);
+                    uploadImage(uri1, carImage1);
                     break;
 
 
                 case PICK_IMAGE_REQUEST2:
                     CropImageView.CropResult result2 = CropImage.getActivityResult(data);
                     Uri uri2 = result2.getUri();
-                    uploadImage(uri2, carImage2, fileReference2);
+                    uploadImage(uri2, carImage2);
                     break;
 
                 case PICK_IMAGE_REQUEST3:
                     CropImageView.CropResult result3 = CropImage.getActivityResult(data);
                     Uri uri3 = result3.getUri();
-                    uploadImage(uri3, carImage3, fileReference3);
+                    uploadImage(uri3, carImage3);
                     break;
 
                 case PICK_IMAGE_REQUEST4:
                     CropImageView.CropResult result4 = CropImage.getActivityResult(data);
                     Uri uri4 = result4.getUri();
-                    uploadImage(uri4, carImage4, fileReference4);
+                    uploadImage(uri4, carImage4);
                     break;
 
                 case PICK_IMAGE_REQUEST5:
                     CropImageView.CropResult result5 = CropImage.getActivityResult(data);
                     Uri uri5 = result5.getUri();
-                    uploadImage(uri5, carImage5, fileReference5);
+                    uploadImage(uri5, carImage5);
                     break;
 
                 case PICK_IMAGE_REQUEST6:
                     CropImageView.CropResult result6 = CropImage.getActivityResult(data);
                     Uri uri6 = result6.getUri();
-                    uploadImage(uri6, carImage6, fileReference6);
+                    uploadImage(uri6, carImage6);
                     break;
 
                 case PICK_IMAGE_REQUEST7:
                     CropImageView.CropResult result7 = CropImage.getActivityResult(data);
                     Uri uri7 = result7.getUri();
-                    uploadImage(uri7, carImage7, fileReference7);
+                    uploadImage(uri7, carImage7);
                     break;
 
                 case PICK_IMAGE_REQUEST8:
                     CropImageView.CropResult result8 = CropImage.getActivityResult(data);
                     Uri uri8 = result8.getUri();
-                    uploadImage(uri8, carImage8, fileReference8);
+                    uploadImage(uri8, carImage8);
                     break;
 
                 case PICK_IMAGE_REQUEST9:
                     CropImageView.CropResult result9 = CropImage.getActivityResult(data);
                     Uri uri9 = result9.getUri();
-                    uploadImage(uri9, carImage9, fileReference9);
+                    uploadImage(uri9, carImage9);
                     break;
 
                 case PICK_IMAGE_REQUEST10:
                     CropImageView.CropResult result10 = CropImage.getActivityResult(data);
                     Uri uri10 = result10.getUri();
-                    uploadImage(uri10, carImage10, fileReference10);
+                    uploadImage(uri10, carImage10);
                     break;
             }
         }
 
     }
-    private void uploadImage(Uri uriIn, ImageButton currentIB, StorageReference fileReference) {
-        fileReference.putFile(uriIn).addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+    private void uploadImage(Uri uriIn, ImageButton currentIB) {
+        String fileID = UUID.randomUUID().toString();
+        int layoutIndex = linearLayout1.indexOfChild(currentIB);
+        mStorageRef.child(carToEdit.getDbID() + "/" + fileID).putFile(uriIn).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
             Log.d("", "onSuccess: uri= " + uri.toString());
-            carToEdit.addImageUrl(linearLayout1.indexOfChild(currentIB), uri.toString());
+            carToEdit.addImageUrl(layoutIndex, uri.toString());
         })).addOnCompleteListener(task -> {
             Glide.with(this).load(uriIn).into(currentIB);
-            imageAmount++;
-            if (imageAmount < 10) {
-                linearLayout1.getChildAt(imageAmount).setVisibility(View.VISIBLE);
+
+            if (carToEdit.getCarImageUrls().size() <= 10) {
+                linearLayout1.getChildAt(carToEdit.getCarImageUrls().size()).setVisibility(View.VISIBLE);
             }
         });
     }
 
-    private void deleteImage(ImageButton iBToDelete, StorageReference refToDel) {
-        //refToDel.delete();
+    private void deleteImage(ImageButton iBToDelete) {
+
         int index = IBs.indexOf(iBToDelete);
         mStorageRef.child(carToEdit.getCarImageUrl(index)).delete();
         carToEdit.deleteImageUrl(linearLayout1.indexOfChild(iBToDelete));
 
-        iBToDelete.setVisibility(View.GONE);
+        if(index != 9) {
+            iBToDelete.setVisibility(View.GONE);
+        }
         iBToDelete.setImageResource(R.drawable.plus);
 
         linearLayout1.removeView(iBToDelete);
         linearLayout1.addView(iBToDelete, 9);
-        imageAmount--;
+
 
         mDialog.dismiss();
     }

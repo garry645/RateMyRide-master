@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context=".AddingCarActivity">
 
-    
+
     <EditText
         android:id="@+id/addingCarMakeET"
         android:layout_width="match_parent"
@@ -15,8 +15,7 @@
         android:hint="@string/make"
         android:inputType="text"
         android:textColor="@android:color/darker_gray"
-        android:textColorHint="@android:color/darker_gray"
-        />
+        android:textColorHint="@android:color/darker_gray" />
 
     <EditText
         android:id="@+id/addingCarModelET"
@@ -27,8 +26,8 @@
         android:inputType="text"
         android:textColor="@android:color/darker_gray"
         android:textColorHint="@android:color/darker_gray"
-        tools:targetApi="o"
-        />
+        tools:targetApi="o" />
+
     <EditText
         android:id="@+id/addingCarYearET"
         android:layout_width="match_parent"
@@ -44,8 +43,8 @@
         android:id="@+id/add_car_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_gravity="center"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_design"
         android:text="@string/add_ride"
         android:textAllCaps="false"
@@ -53,5 +52,4 @@
         android:textStyle="bold" />
 
 
-    
 </LinearLayout>
